@@ -19,8 +19,9 @@ Or install it yourself as:
 
 ## Usage
 
-  wr = Wordref::Wordref.new('your_api_key')
-  wr.translate(from: 'en', to: 'fr', 'cat') # => "chat"
+    wr = Wordref::Wordref.new('your_api_key')
+    
+    wr.translate(from: 'en', to: 'fr', 'cat') # => "chat"
 
 That's all.
 
