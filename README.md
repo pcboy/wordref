@@ -1,7 +1,7 @@
 # Wordref
 
 Wordref is a tiny wrapper for the WordReference API.
-You can translate words from one language to another.
+You can translate words from one language to another (Note that Wordreference only supports FROM English and TO english translations)
 
 ## Installation
 
@@ -23,6 +23,7 @@ Or install it yourself as:
     
     wr.translate(from: 'en', to: 'fr', 'cat') # => "chat"
 
+If you don't give the "from" parameter it'll automatically be set to english.
 That's all.
 
 ## Contributing
