@@ -37,6 +37,7 @@ module Wordref
       }
       response.gsub!(/\t/, ' ')
       json = MultiJson.load(response)['term0']
+      return "" if json.nil?
       data = json['PrincipalTranslations'] || json['Entries']
       data.first[1]['FirstTranslation']['term']
     end
