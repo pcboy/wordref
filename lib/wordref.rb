@@ -19,7 +19,7 @@
 require "wordref/version"
 require 'open-uri'
 require 'multi_json'
-require 'maybe'
+require 'attempt'
 
 module Wordref
 
@@ -32,7 +32,9 @@ module Wordref
       dic = "#{params[:from] || 'en'}#{params[:to]}"
       word = params[:word]
       
-      response = open("http://api.wordreference.com/#{@api_key}/json/#{dic}/#{URI::encode(word)}").read
+      response = attempt(3, 3) {
+        open("http://api.wordreference.com/#{@api_key}/json/#{dic}/#{URI::encode(word)}").read
+      }
       response.gsub!(/\t/, ' ')
       json = MultiJson.load(response)['term0']
       data = json['PrincipalTranslations'] || json['Entries']
