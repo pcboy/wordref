@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/pcboy/wordref.svg)](https://travis-ci.org/pcboy/wordref)
+[![Gem Version](https://badge.fury.io/rb/wordref.svg)](http://badge.fury.io/rb/wordref)
+
 # Wordref
 
 Wordref is a tiny wrapper for the WordReference API.
