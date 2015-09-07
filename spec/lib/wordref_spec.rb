@@ -16,26 +16,11 @@
 #  David Hagege <david.hagege@gmail.com>
 #
 
-require "wordref/version"
-require 'open-uri'
-require 'multi_json'
-require 'attempt'
-require 'nokogiri'
+require 'wordref'
 
-module Wordref
-
-  class Wordref
-    def translate(params = {})
-      dic = "#{params[:from] || 'en'}#{params[:to]}"
-      word = params[:word]
-      
-      response = attempt(3, 3) {
-        open("http://www.wordreference.com/#{dic}/#{URI::encode(word)}").read
-      }
-      doc = Nokogiri::HTML(response)
-      first_trans = doc.css("tr[id^='#{dic}:']").first
-      first_trans.css('td[class="ToWrd"] > text()').to_s.strip
-    end
+describe Wordref do
+  it "can translate the word car in french" do
+    tr = Wordref::Wordref.new
+    expect(tr.translate(from: 'en', to: 'fr', word: 'car')).to eq("voiture")
   end
-
 end

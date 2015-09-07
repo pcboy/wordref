@@ -3,7 +3,7 @@
 
 # Wordref
 
-Wordref is a tiny wrapper for the WordReference API.
+Wordref is a tiny gem to get a translation from Word reference (no API key needed).
 You can translate words from one language to another (Note that Wordreference only supports FROM English and TO english translations)
 
 ## Installation
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-    wr = Wordref::Wordref.new('your_api_key')
+    wr = Wordref::Wordref.new
     
     wr.translate(from: 'en', to: 'fr', word: 'cat') # => "chat"
 
