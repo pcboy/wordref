@@ -30,7 +30,8 @@ module Wordref
       word = params[:word]
       
       response = attempt(3, 3) {
-        open("http://www.wordreference.com/#{dic}/#{URI::encode(word)}").read
+        open("http://www.wordreference.com/#{dic}/#{URI::encode(word)}",
+             'User-Agent' => 'Mozilla/5.0 (X11; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0').read
       }
       doc = Nokogiri::HTML(response)
       first_trans = doc.css("tr[id^='#{dic}:']").first
