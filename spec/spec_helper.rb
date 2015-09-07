@@ -17,10 +17,3 @@
 #
 
 require 'wordref'
-
-describe Wordref do
-  it "can translate the word car in french" do
-    tr = Wordref::Wordref.new('your_api_key')
-    tr.translate(from: 'en', to: 'fr', word: 'car').should eql("voiture")
-  end
-end
