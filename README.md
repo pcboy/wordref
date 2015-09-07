@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/pcboy/wordref.svg)](https://travis-ci.org/pcboy/wordref)
 [![Gem Version](https://badge.fury.io/rb/wordref.svg)](http://badge.fury.io/rb/wordref)
+[![Code Climate](https://codeclimate.com/github/pcboy/wordref/badges/gpa.svg)](https://codeclimate.com/github/pcboy/wordref)
 
 # Wordref
 
