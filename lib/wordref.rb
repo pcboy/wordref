@@ -34,6 +34,7 @@ module Wordref
       }
       doc = Nokogiri::HTML(response)
       first_trans = doc.css("tr[id^='#{dic}:']").first
+      return nil if first_trans.nil?
       first_trans.css('td[class="ToWrd"] > text()').to_s.strip
     end
   end
