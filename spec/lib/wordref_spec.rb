@@ -23,4 +23,10 @@ describe Wordref do
     tr = Wordref::Wordref.new
     expect(tr.translate(from: 'en', to: 'fr', word: 'car')).to eq("voiture")
   end
+
+  it "should throw an error if chosen language is incorrect" do
+    expect {
+      Wordref::Wordref.new.translate(from: 'english', to: 'french', word: 'car')
+    }.to raise_error(Wordref::Wordref::InvalidLangFormat)
+  end
 end
