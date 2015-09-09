@@ -23,12 +23,19 @@ require 'attempt'
 require 'nokogiri'
 
 module Wordref
-
   class Wordref
+    class InvalidLangFormat < ArgumentError; end;
+
     def translate(params = {})
+      if !accepted_langs.keys.include?(params[:from] + params[:to])
+        raise InvalidLangFormat,
+          "Invalid chosen language (#{params[:from]} / #{params[:to]}).\n" +
+          "Accepted langs are:\n" + accepted_langs.to_s
+      end
+
       dic = "#{params[:from] || 'en'}#{params[:to]}"
       word = params[:word]
-      
+
       response = attempt(3, 3) {
         open("http://www.wordreference.com/#{dic}/#{URI::encode(word)}",
              'User-Agent' => 'Mozilla/5.0 (X11; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0').read
@@ -38,6 +45,48 @@ module Wordref
       return nil if first_trans.nil?
       first_trans.css('td[class="ToWrd"] > text()').to_s.strip
     end
-  end
 
+    private 
+    def accepted_langs
+      {
+        "enes" => "English-Spanish",
+        "esen" => "Spanish-English",
+        "esfr" => "Spanish-French",
+        "espt" => "Spanish-Portuguese",
+        "enfr" => "English-French",
+        "fren" => "French-English",
+        "fres" => "French-Spanish",
+        "enit" => "English-Italian",
+        "iten" => "Italian-English",
+        "ende" => "English-German",
+        "deen" => "German-English",
+        "ensv" => "English-Swedish",
+        "sven" => "Swedish-English",
+        "enru" => "English-Russian",
+        "ruen" => "Russian-English",
+        "enpt" => "English-Portuguese",
+        "pten" => "Portuguese-English",
+        "ptes" => "Portuguese-Spanish",
+        "enpl" => "English-Polish",
+        "plen" => "Polish-English",
+        "enro" => "English-Romanian",
+        "roen" => "Romanian-English",
+        "encz" => "English-Czech",
+        "czen" => "Czech-English",
+        "engr" => "English-Greek",
+        "gren" => "Greek-English",
+        "entr" => "English-Turkish",
+        "tren" => "Turkish-English",
+        "enzh" => "English-Chinese",
+        "zhen" => "Chinese-English",
+        "enja" => "English-Japanese",
+        "jaen" => "Japanese-English",
+        "enko" => "English-Korean",
+        "koen" => "Korean-English",
+        "enar" => "English-Arabic",
+        "aren" => "Arabic-English"
+      }
+    end
+
+  end
 end
