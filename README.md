@@ -5,7 +5,7 @@
 # Wordref
 
 Wordref is a tiny gem to get a translation from Word reference (no API key needed).
-You can translate words from one language to another (Note that Wordreference only supports FROM English and TO english translations)
+You can translate words from one language to another ([Wordreference supported languages](https://github.com/pcboy/wordref/commit/25b4a4fef89e40cce6ae018501041aa6584538d8#diff-43114cec6cc4579b1d10b1d75031e5b5R52))
 
 ## Installation
 
