@@ -16,8 +16,8 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
-  gem.add_dependency "multi_json", '~> 1.13'
-  gem.add_dependency "attempt", '~> 0.4'
-  gem.add_dependency "nokogiri", '~> 1.8'
+  gem.add_dependency "multi_json", '~> 1.12'
+  gem.add_dependency "attempt", '~> 0.3'
+  gem.add_dependency "nokogiri", '~> 1.6'
   gem.add_development_dependency "rspec"
 end
