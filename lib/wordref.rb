@@ -36,7 +36,7 @@ module Wordref
       dic = "#{params[:from] || 'en'}#{params[:to]}"
       word = params[:word]
 
-      response = attempt(3, 3) {
+      response = attempt(tries: 3, interval: 3) {
         open("http://www.wordreference.com/#{dic}/#{URI::encode(word)}",
              'User-Agent' => 'Mozilla/5.0 (X11; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0').read
       }
