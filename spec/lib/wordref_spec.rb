@@ -17,11 +17,14 @@
 #
 
 require 'wordref'
+require 'spec_helper' 
 
 describe Wordref do
   it "can translate the word car in french" do
     tr = Wordref::Wordref.new
-    expect(tr.translate(from: 'en', to: 'fr', word: 'car')).to eq("voiture")
+    VCR.use_cassette 'wordef' do
+      expect(tr.translate(from: 'en', to: 'fr', word: 'car')).to eq("voiture")
+    end
   end
 
   it "should throw an error if chosen language is incorrect" do
